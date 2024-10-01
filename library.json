@@ -1,0 +1,24 @@
+{
+    "name": "ESPUtilities",
+    "version": "1.0.0",
+    "description": "Logging and several utility wrapper classes for ESP32 projects including WiFi, MQTT, Time, and Telemetry management",
+    "keywords": "esp32, wifi, mqtt, time, telemetry, logger",
+    "repository":
+    {
+      "type": "git",
+      "url": "https://github.com/cakgok/ESP-Arduino-Utils.git"
+    },
+    "authors":
+    [
+      {
+        "name": "C. Akgok"
+      }
+    ],
+    "license": "MIT",
+    "dependencies": {
+      "bblanchon/ArduinoJson": "^6.19.4",
+      "knolleary/PubSubClient": "^2.8"
+    },
+    "frameworks": "arduino",
+    "platforms": "espressif32"
+  }

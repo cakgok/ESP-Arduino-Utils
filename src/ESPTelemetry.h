@@ -16,11 +16,9 @@ public:
 
     template<typename T>
     void addCustomData(const char* key, std::function<T()> dataProvider);
-
+    
     void addCustomData(const char* key, std::function<UBaseType_t()> dataProvider);
-
     bool publishTelemetry();
-
     void addTaskToMonitor(TaskHandle_t task, const char* taskName);
 
 private:
