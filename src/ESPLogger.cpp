@@ -140,3 +140,9 @@ void Logger::addLog(std::string_view tag, Level level, const char* message) {
         #endif
     }
 }
+
+void Logger::log(std::string_view tag, Level level, const char* message) {
+    if (level >= filterLevel.load(std::memory_order_relaxed)) {
+        addLog(tag, level, message);
+    }
+}

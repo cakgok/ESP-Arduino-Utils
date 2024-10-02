@@ -81,8 +81,23 @@ public:
      * @param args Arguments to be formatted into the log message.
      */
     template<typename... Args>
-    void log(std::string_view tag, Level level, const char* format, Args&&... args);
+    void log(std::string_view tag, Level level, const char* format, Args&&... args) {
+        if (level >= filterLevel.load(std::memory_order_relaxed)) {
+            char message[LOG_SIZE];
+            snprintf(message, sizeof(message), format, std::forward<Args>(args)...);
+            addLog(tag, level, message);
+        }
+    }
 
+    /**
+     * @brief Overload, Log a message without formatting.
+     * @param tag Tag for the log entry.
+     * @param level Severity level of the log.
+     * @param message Content of the log message.
+     */
+    void log(std::string_view tag, Level level, const char* message);
+
+    
     /**
      * @struct LogEntry
      * @brief Structure representing a single log entry.
